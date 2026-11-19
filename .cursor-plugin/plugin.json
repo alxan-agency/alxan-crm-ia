@@ -1,0 +1,18 @@
+{
+  "name": "alxan-crm",
+  "version": "2026.11.19",
+  "description": "Opere a sua conta do Alxan CRM pela sua IA: conversas, contatos, funil, agenda, follow-up, relatórios. Confirma antes de qualquer envio ao cliente.",
+  "author": {
+    "name": "Alxan",
+    "url": "https://www.alxan.com.br"
+  },
+  "repository": "https://github.com/alxan-agency/alxan-crm-ia",
+  "license": "LicenseRef-Alxan",
+  "keywords": [
+    "alxan",
+    "crm",
+    "whatsapp",
+    "mcp",
+    "skills"
+  ]
+}

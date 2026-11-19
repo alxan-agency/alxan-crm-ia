@@ -1,0 +1,44 @@
+{
+  "name": "alxan-crm",
+  "displayName": "Alxan CRM",
+  "version": "2026.11.19",
+  "description": "Opere a sua conta do Alxan CRM pela sua IA: conversas, contatos, funil, agenda, follow-up, relatórios. Confirma antes de qualquer envio ao cliente.",
+  "author": {
+    "name": "Alxan",
+    "url": "https://www.alxan.com.br"
+  },
+  "homepage": "https://crm.alxan.com.br/hc/ajuda/articles/use-o-alxan-crm-com-a-sua-ia",
+  "repository": "https://github.com/alxan-agency/alxan-crm-ia",
+  "license": "LicenseRef-Alxan",
+  "keywords": [
+    "alxan",
+    "crm",
+    "whatsapp",
+    "mcp",
+    "skills"
+  ],
+  "userConfig": {
+    "alxan_crm_mcp_url": {
+      "type": "string",
+      "title": "Endereço do perfil MCP",
+      "description": "Endereço do seu perfil em Configurações → MCP do Alxan CRM. Comece com um perfil somente leitura.",
+      "required": true
+    },
+    "alxan_crm_mcp_token": {
+      "type": "string",
+      "title": "Segredo do perfil MCP",
+      "description": "Segredo do perfil, mostrado uma única vez ao criar ou rotacionar. Fica guardado no cofre do seu sistema. Nunca cole na conversa.",
+      "required": true,
+      "sensitive": true
+    }
+  },
+  "mcpServers": {
+    "alxan-crm": {
+      "type": "http",
+      "url": "${user_config.alxan_crm_mcp_url}",
+      "headers": {
+        "Authorization": "Bearer ${user_config.alxan_crm_mcp_token}"
+      }
+    }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "name": "alxan-crm",
+  "owner": { "name": "Alxan" },
+  "metadata": { "description": "Skill para usar o Alxan CRM com a sua IA." },
+  "plugins": [ { "name": "alxan-crm", "source": ".", "description": "Opere a sua conta do Alxan CRM conversando com a sua IA." } ]
+}

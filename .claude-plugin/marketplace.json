@@ -1,0 +1,8 @@
+{
+  "name": "alxan-crm",
+  "description": "Skill e conector MCP para usar o Alxan CRM com a sua IA.",
+  "owner": { "name": "Alxan" },
+  "plugins": [
+    { "name": "alxan-crm", "source": "./", "description": "Opere a sua conta do Alxan CRM conversando com a sua IA, com confirmação antes de qualquer envio.", "category": "productivity" }
+  ]
+}
