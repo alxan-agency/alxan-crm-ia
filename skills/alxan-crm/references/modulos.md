@@ -15,9 +15,9 @@ Para achar as ferramentas de um módulo, use `search_tools` com uma palavra da e
 - `mcp` · MCP (Model Context Protocol): Native MCP: expose the account (and Maestro departments) as tools to external AI clients; curated toolsets, read-only mode and per-account tokens.
 - `setup_blueprints` · Setup Blueprints: SetupBlueprint engine: vertical templates, generative blueprints and the platform one-call setup payload. · combina com: account_brain
 - `maestro_byok` · Maestro BYOK (Account LLM Keys) (ligado por padrão): Account-level LLM provider keys (BYOK) mirrored to the Maestro sidecar; off forces the installation-global keys.
-- `flow_builder_runtime_v2` · Flow Builder Runtime V2: Compile newly published flows into the immutable Flow Builder runtime v2 contract. · exige: flow_builder
+- `flow_builder_runtime_v2` · Flow Builder Runtime V2 (ligado por padrão): Compile newly published flows into the immutable Flow Builder runtime v2 contract. · exige: flow_builder
 - `maestro_global_keys` · Maestro Installation LLM Keys (Global Fallback): Lets the account fall back to the installation's own LLM keys. Off: the default for a new signup: means the account spends only on the keys it brought. · combina com: maestro_byok
-- `delayed_automations` · Delayed Automations: Automation rules whose actions run after a configured delay.
+- `delayed_automations` · Delayed Automations: Automation rules whose actions run after a configured delay. · exige: automations
 
 ## Channels & Inboxes (27)
 - `inbound_emails` · Inbound Emails (ligado por padrão): Process inbound email as conversations.
@@ -61,7 +61,7 @@ Para achar as ferramentas de um módulo, use `search_tools` com uma palavra da e
 - `contracts` · Contracts & E-signature: Contract templates, e-signature tiers and signed-PDF audit trail.
 
 ## Conversations & Productivity (17)
-- `conversation_glance_signals` · Conversation Glance Signals: At-a-glance signals surfaced on conversations.
+- `conversation_glance_signals` · Conversation Glance Signals (ligado por padrão): At-a-glance signals surfaced on conversations.
 - `macros` · Macros (ligado por padrão): One-click multi-step conversation actions.
 - `labels` · Labels (ligado por padrão): Tag and organize conversations with labels. · ajuda: https://crm.alxan.com.br/hc/ajuda/articles/administration-horarios-labels-atributos-pt-br
 - `canned_responses` · Canned Responses (ligado por padrão): Reusable saved replies for agents. · ajuda: https://crm.alxan.com.br/hc/ajuda/articles/conversations-respostas-rapidas-pt-br
@@ -74,7 +74,7 @@ Para achar as ferramentas de um módulo, use `search_tools` com uma palavra da e
 - `calendar` · Calendar: Native agenda with Google Calendar sync and public booking.
 - `internal_chat` · Internal Chat: Internal team chat: channels, directs and announcements.
 - `media_library` · Media Library (ligado por padrão): Account-global reusable media store, re-sent without re-uploading.
-- `native_advanced_search` · Advanced Search (Native): Native ranked full-text search with date, sender and inbox filters.
+- `native_advanced_search` · Advanced Search (Native) (ligado por padrão): Native ranked full-text search with date, sender and inbox filters.
 - `outbound_agent_name_header` · Outbound Agent Name Header: Prefix outbound messages with the sender's display name in bold while preserving personal signatures.
 - `realtime_translation` · Realtime Translation: Per-inbox and per-conversation automatic translation with an individual viewer language for each agent. · combina com: integrations
 - `message_scheduling` · Message Scheduling: Create, review and safely deliver one-time, sequenced or recurring native scheduled messages.
@@ -87,7 +87,7 @@ Para achar as ferramentas de um módulo, use `search_tools` com uma palavra da e
 - `field_level_permissions` · Field-level Permissions (ligado por padrão): Per-field PII masking on top of the RBAC matrix. · combina com: granular_permissions
 - `platform_governance` · Platform Governance (ligado por padrão): Super-admin role templates and entitlements. · combina com: granular_permissions
 - `governance_lgpd` · Governance & LGPD: Governance & LGPD hub: presentation mode (PII blur), consent registry, data-subject requests (export/erasure), retention and DPO data. · combina com: granular_permissions
-- `native_audit_trail` · Audit Trail (Native): Native account audit trail (CE-safe, dedicated table) consumed by the Governance hub.
+- `native_audit_trail` · Audit Trail (Native) (ligado por padrão): Native account audit trail (CE-safe, dedicated table) consumed by the Governance hub.
 - `native_event_pipeline_v2` · Native Event Pipeline V2: Structured, idempotent conversation activity projections backed by the canonical domain-event ledger. · combina com: native_audit_trail
 
 ## Growth & Marketing (15)
@@ -116,15 +116,28 @@ Para achar as ferramentas de um módulo, use `search_tools` com uma palavra da e
 - `notion_integration` · Notion Integration: Notion integration.
 - `api_and_webhooks` · API and Webhooks (ligado por padrão): Account API access tokens and outgoing webhooks.
 
-## Payments & Sales (8)
+## Internal & legacy (12)
+- `message_reply_to` · Message Reply To (descontinuado): Retired flag; replying to a message is always available.
+- `inbox_view` · Inbox View (interno): Internal inbox view experiment.
+- `help_center_embedding_search` · Help Center Embedding Search (interno): Enterprise semantic search for the help center (internal).
+- `search_with_gin` · Search messages with GIN (interno): Internal message search through a GIN index.
+- `whatsapp_embedded_signup` · WhatsApp Embedded Signup (descontinuado): Retired flag replaced by the WhatsApp embedded signup flow flag.
+- `crm_v2` · CRM V2 (interno): Internal CRM v2 experiment.
+- `advanced_search_indexing` · Advanced Search Indexing (interno): Enterprise search indexing (internal).
+- `reply_mailer_migration` · Reply Mailer Migration (interno): Temporary flag for the reply mailer migration.
+- `unread_count_for_filters` · Unread Count For Filters (interno): Internal unread counts for conversation filters.
+
+## Payments & Sales (10)
 - `payments` · Payments: Multi-gateway payments (Asaas / Mercado Pago) with in-chat checkout.
 - `sales_management` · Sales Management: Client portfolios, goals, gamification and a real-time wallboard. · combina com: granular_permissions, engagement_tracking
 - `orders_registry` · CRM Orders Registry: Contact-centric purchase log across gateways (a log, not a gateway). · combina com: payments, catalog
 - `unified_revenue_ledger` · Unified Revenue Ledger: Converges all revenue counting on the canonical order.paid axis (single credit per sale). · combina com: orders_registry, sales_management
 - `affiliate_program` · Affiliate Program: Native affiliate entity with durable referral attribution and dual seller+affiliate commission. · combina com: unified_revenue_ledger, sales_management
 - `commerce_recovery` · Commerce Recovery (Sales Recovery): Track abandoned purchases and coordinate recovery messages, outcomes and retries. · combina com: payments, catalog
-- `payment_installment_plans` · Payment installment plans: Finite installment plans, capped recurrence and branded payment books. · combina com: payments · ajuda: https://crm.alxan.com.br/hc/ajuda/articles/payments-planos-de-cobranca-pt-br
-- `sales_integrated_closing` · Integrated Sales Closing: Integrated sales closing with human authorization.
+- `payment_installment_plans` · Payment installment plans: Finite installment plans, capped recurrence and branded payment books. · exige: payments · ajuda: https://crm.alxan.com.br/hc/ajuda/articles/payments-planos-de-cobranca-pt-br
+- `sales_integrated_closing` · Integrated Sales Closing: Integrated sales closing with human authorization. · exige: sales_management, contracts, orders_registry
+- `sales_agreement_offers` · Sales Agreement Offers: Versioned sales offers with the acceptance evidence; robots may only fulfil the accepted current version. · combina com: payments, orders_registry · ajuda: https://crm.alxan.com.br/hc/ajuda/articles/maestro-brain-ofertas-versionadas-e-aceite-pt-br
+- `sales_agreement_robot` · Sales Agreement Robot Commitment: The robot commits to an accepted offer; the accepted plan becomes a closing that emits the charges. · exige: sales_agreement_offers, orders_registry · combina com: payments · ajuda: https://crm.alxan.com.br/hc/ajuda/articles/maestro-brain-compromisso-do-robo-na-oferta-aceita-pt-br
 
 ## Platform & Operation (15)
 - `disable_branding` · Disable Branding (descontinuado): White-label: hide Alxan CRM / installation branding.
@@ -146,17 +159,6 @@ Para achar as ferramentas de um módulo, use `search_tools` com uma palavra da e
 - `session_analytics` · Session Analytics: Operator-controlled session-behavior analytics (Clarity / Amplitude).
 - `whatsapp_cost_center` · WhatsApp cost center: Per-message WhatsApp Cloud cost ledger, usage by billing month and cost visibility inside conversations. · ajuda: https://crm.alxan.com.br/hc/ajuda/articles/reports-whatsapp-cost-center-pt-br
 
-## Outros (12)
-- `message_reply_to` · Message Reply To (descontinuado)
-- `inbox_view` · Inbox View (interno)
-- `help_center_embedding_search` · Help Center Embedding Search (interno)
-- `search_with_gin` · Search messages with GIN (interno)
-- `whatsapp_embedded_signup` · WhatsApp Embedded Signup (descontinuado)
-- `crm_v2` · CRM V2 (interno)
-- `advanced_search_indexing` · Advanced Search Indexing (interno)
-- `reply_mailer_migration` · Reply Mailer Migration (interno)
-- `unread_count_for_filters` · Unread Count For Filters (interno)
-
 ## Etiquetas de ferramentas no MCP (quantidade)
 
-Access Roles (8), Account (5), Account AgentBots (1), Ads (45), Agent Capacity Policies (11), Agents (6), Assignable Agents (1), Assignment Policies (7), Audit Logs (1), Automation Rule (7), Branded Email Layout (1), Bug Reports (24), Bulk Actions (5), CRM (4), CRM Item Attachments (1), CRM Item Checklist (7), CRM Item Line Items (5), CRM Item Notes (6), CRM Item Participants (5), CRM Items (23), CRM Organizations (6), CRM Pipelines (10), CRM Reports (1), CRM Stages (9), CRM Templates (4), CSAT Survey Responses (3), Calendar (10), Calendar Availability (5), Calendar Connections (5), Calendar Event Types (3), Calendar Events (4), Calendar Reports (1), Calendar Settings (4), Calls (1), Campaign Suppressions (3), Campaigns (14), Canned Responses (5), IA nativa (64), Catalog (37), Catalog Categories (6), Catalog Products (7), Catalog Reports (1), Catalog Sync Runs (3), Catalog Sync Sources (7), Catalog Variants (3), Commerce (24), Companies (15), Contact Inboxes (1), Contact Labels (2), Contacts (28), Contracts (37), Conversation Assignments (2), Conversation Sidebar Layout (3), Conversations (55), Custom Attributes (6), Custom Filters (6), Custom Roles (6), Custom Scripts (8), Dashboard Apps (10), Data Imports (5), Engagement (17), Flow Builder (43), Follow-up (21), Governance (15), Growth Distribution (12), Growth Social (101), Guided Tours (1), Help Center (27), Inboxes (70), Integrations (23), Internal Chat (23), Labels (6), Limits (1), Live Reports (2), Macros (8), Maestro (82), Media Library (23), Message Schedules (9), Message Scheduling (3), Messages (4), Notifications (12), Onboarding (3), Organization Memberships (6), Organizations (13), Payment Charges (9), Payment Connections (9), Payment Demo (2), Payment Installment Plans (1), Payment Offers (12), Payment Plans (11), Payment Reports (1), Payment Subscriptions (4), Payments (18), Relationship Types (6), Relationships (5), Reports (14), Routing Policies (15), SAML (5), SLA Policies (8), Sales (113), Search (7), Setup (6), Summary Reports (1), Task Attachments (2), Task Checklist (7), Task Comments (5), Task Dependencies (3), Task Links (3), Task Lists (9), Task Reminders (3), Task SLA Policies (6), Task Templates (8), Task Watchers (3), Tasks (20), Team Management (50), Teams (10), Usage (1), Webhooks (4), WhatsApp (54), WhatsApp Calls (4), WhatsApp Hub (37), WhatsApp Web (69), WhatsApp Web Calls (16), Year In Review (1)
+Access Roles (8), Account (5), Account AgentBots (4), Ads (47), Agent Capacity Policies (13), Agents (6), Assignable Agents (1), Assignment Policies (8), Audit Logs (1), Automation Rule (7), Branded Email Layout (1), Bug Reports (24), Bulk Actions (5), CRM (9), CRM Item Attachments (3), CRM Item Checklist (7), CRM Item Line Items (5), CRM Item Notes (6), CRM Item Participants (5), CRM Items (24), CRM Organizations (6), CRM Pipelines (10), CRM Reports (1), CRM Stages (9), CRM Templates (4), CSAT Survey Responses (4), Calendar (10), Calendar Availability (5), Calendar Bookings (1), Calendar Connections (5), Calendar Event Types (10), Calendar Events (6), Calendar Reports (1), Calendar Settings (4), Calls (1), Campaign Suppressions (4), Campaigns (17), Canned Responses (5), IA nativa (64), Catalog (45), Catalog Categories (6), Catalog Products (14), Catalog Reports (1), Catalog Sync Runs (4), Catalog Sync Sources (7), Catalog Variants (7), Commerce (26), Companies (15), Contact Inboxes (1), Contact Labels (2), Contacts (32), Contextual Help (1), Contracts (66), Conversation Assignments (2), Conversation Sidebar Layout (3), Conversations (60), Custom Attributes (6), Custom Filters (6), Custom Roles (6), Custom Scripts (8), Dashboard Apps (10), Data Imports (9), Engagement (18), Flow Builder (53), Follow-up (51), Governance (16), Growth Distribution (24), Growth Social (110), Guided Tours (1), Help Center (29), Inboxes (81), Integrations (25), Internal Chat (24), Labels (6), Limits (1), Live Reports (2), Macros (8), Maestro (99), Mcp (2), Media Library (40), Message Schedules (21), Message Scheduling (3), Messages (4), Messaging (1), Notifications (12), Onboarding (3), Organization Memberships (6), Organizations (14), Payment Charges (10), Payment Connections (11), Payment Demo (2), Payment Installment Plans (5), Payment Offers (13), Payment Plans (12), Payment Reports (1), Payment Subscriptions (5), Payments (18), Platform Notifications (1), Profile (5), Relationship Types (6), Relationships (5), Reports (20), Routing Policies (16), SAML (5), SLA Policies (9), Sales (123), Sales Offers (6), Sales Plan Templates (10), Search (7), Setup (6), Summary Reports (1), Task Attachments (3), Task Checklist (7), Task Comments (5), Task Dependencies (3), Task Links (3), Task Lists (9), Task Reminders (3), Task SLA Policies (6), Task Templates (8), Task Watchers (3), Tasks (20), Team Management (50), Teams (10), Usage (1), Webhooks (5), WhatsApp (58), WhatsApp Calls (5), WhatsApp Hub (43), WhatsApp Web (72), WhatsApp Web Calls (17), Year In Review (1)
